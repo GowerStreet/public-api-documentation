@@ -11,7 +11,7 @@ The Forecast API allows you to access film data including actuals, future predic
 
 ## Authentication
 
-To be authorized, your request must include the HTTP header `Authorization: Token <token body>` with a request token which you obtain from sending a `POST` request to the `/login` endpoint:
+To be authorized, your request must include the HTTP header `Authorization: Token <your token>` with a request token which you obtain from sending a `POST` request to the `/login` endpoint:
 
 ```sh
 > curl -X POST -H 'Content-type: application/json' -d '{"password": "<your password>", "email": "<your login email>"}' "https://forecast.gower.st/login"
@@ -20,6 +20,8 @@ To be authorized, your request must include the HTTP header `Authorization: Toke
   "token": "<your token>"
 }
 ```
+
+Use the same `email` and `password` you use to log in to Forecast.
 
 ## Querying for multiple territories or films in a single request
 
