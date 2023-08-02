@@ -97,8 +97,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 
 | Parameter  | Type    | Description  | Required |
 |------------|---------|--------------|----------|
-| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | Yes  |
-| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | Yes  |
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 
 ### Date
@@ -145,9 +145,9 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 
 | Parameter  | Type    | Description  | Required |
 |------------|---------|--------------|----------|
-| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | Yes  |
-| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | Yes  |
-| `date`    | yyyy-mm-dd | The date for which we want to see actuals / predictions | Yes |
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
+| `date`    | yyyy-mm-dd | The date for which we want to see actuals / predictions | **Yes** |
 | `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
@@ -223,8 +223,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 
 | Parameter  | Type    | Description  | Required |
 |------------|---------|--------------|----------|
-| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | Yes  |
-| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | Yes  |
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `from`    | yyyy-mm-dd | The start of the date range (included) | No |
 | `to`    | yyyy-mm-dd | The end of the date range (excluded) | No |
 | `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
@@ -327,9 +327,9 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 
 | Parameter  | Type    | Description  | Required |
 |------------|---------|--------------|----------|
-| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | Yes  |
-| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | Yes  |
-| `from`    | yyyy-mm-dd | The start of the date range (included) (default to 2009-01-01) | No |
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
+| `from`    | yyyy-mm-dd | The start of the date range (included) (default to 2009-01-01) | **Yes** |
 | `to`    | yyyy-mm-dd | The end of the date range (excluded) (defaults to 5 years from now) | No |
 | `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
@@ -379,8 +379,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 
 | Parameter  | Type    | Description  | Required |
 |------------|---------|--------------|----------|
-| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | Yes  |
-| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | Yes  |
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
@@ -429,8 +429,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 
 | Parameter  | Type    | Description  | Required |
 |------------|---------|--------------|----------|
-| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | Yes  |
-| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | Yes  |
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
