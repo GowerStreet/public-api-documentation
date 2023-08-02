@@ -329,8 +329,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 |------------|---------|--------------|----------|
 | `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
 | `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
-| `from`    | yyyy-mm-dd | The start of the date range (included) (default to 2009-01-01) | **Yes** |
-| `to`    | yyyy-mm-dd | The end of the date range (excluded) (defaults to 5 years from now) | No |
+| `week`    | Number | Use `1` for opening week, `2` for week after etc | **Yes** |
 | `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
