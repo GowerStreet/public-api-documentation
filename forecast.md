@@ -7,6 +7,7 @@ The Forecast API allows you to access film data including actuals, future predic
  * [/api/v3/date-range](#date-range): Day-by-day film actuals or predictions for a given date range
  * [/api/v3/week](#week): Day-by-day film actuals or predictions for a given week (starting Monday and ending Sunday)
  * [/api/v3/lifetime](#lifetime): Film lifetime actuals or predictions
+ * [/api/v3/lifetime/top](#top-lifetime): List the films with the highest lifetime actuals or predictions in the given territories
  * [/api/v3/opening-weekend](#opening-weekend): Film opening weekend actuals or predictions
 
 ## Authentication
@@ -382,6 +383,82 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
+| `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
+| `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
+| `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
+
+
+### Top Lifetime
+
+```
+GET https://forecast.gower.st/api/v3/lifetime/top
+```
+
+Returns a list of films one or more territories ranked by their lifetime. The films returned are all released in at least one of the territories between the `from` date and the `to` date. These two values default to Jan 1st of the current year and Jan 1st of next year.
+
+**Sample request**:
+
+```
+curl -H "Content-type: application/json" -H "Authorization: Token `cat token.txt`" "https://forecast.gower.st/api/v3/lifetime/top?ter_id=UK&ter_id=DE&limit=5" | jq '.'
+```
+
+**Sample Response**:
+```json
+{
+  "ter_ids": [
+    "DE",
+    "UK"
+  ],
+  "from": "2023-01-01",
+  "to": "2024-01-01",
+  "data": [
+    {
+      "primary_title_no": 952324,
+      "type": "estimate",
+      "base": 123456789,
+      "currency": "USD",
+      "release_date": "2023-07-20"
+    },
+    {
+      "primary_title_no": 894934,
+      "type": "estimate",
+      "base": 12345678,
+      "currency": "USD",
+      "release_date": "2023-04-05"
+    },
+    {
+      "primary_title_no": 938493,
+      "type": "estimate",
+      "base": 1234567,
+      "currency": "USD",
+      "release_date": "2023-07-20"
+    },
+    {
+      "primary_title_no": 919019,
+      "type": "estimate",
+      "base": 123456,
+      "currency": "USD",
+      "release_date": "2023-05-03"
+    },
+    {
+      "primary_title_no": 931323,
+      "type": "estimate",
+      "base": 12345,
+      "currency": "USD",
+      "release_date": "2023-12-14"
+    }
+  ]
+}
+```
+
+**Parameters**:
+
+| Parameter  | Type    | Description  | Required |
+|------------|---------|--------------|----------|
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `from`    | yyyy-mm-dd | Include films released after this date (included) | No |
+| `to`    | yyyy-mm-dd | Only Include films released before this date (excluded) | No |
+| `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
