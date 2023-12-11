@@ -9,6 +9,7 @@ The Forecast API allows you to access film data including actuals, future predic
  * [/api/v3/lifetime](#lifetime): Film lifetime actuals or predictions
  * [/api/v3/lifetime/top](#top-lifetime): List the films with the highest lifetime actuals or predictions in the given territories
  * [/api/v3/opening-weekend](#opening-weekend): Film opening weekend actuals or predictions
+ * [/api/v3/comps](#comps): Top comps for film
 
 ## Authentication
 
@@ -149,8 +150,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
 | `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `date`    | yyyy-mm-dd | The date for which we want to see actuals / predictions | **Yes** |
-| `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
-| `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
+| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
+| `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
@@ -228,8 +229,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `from`    | yyyy-mm-dd | The start of the date range (included) | No |
 | `to`    | yyyy-mm-dd | The end of the date range (excluded) | No |
-| `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
-| `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
+| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
+| `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
@@ -331,8 +332,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
 | `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
 | `week`    | Number | Use `1` for opening week, `2` for week after etc | **Yes** |
-| `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
-| `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
+| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
+| `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
@@ -381,8 +382,8 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 |------------|---------|--------------|----------|
 | `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
 | `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
-| `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
-| `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
+| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
+| `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
@@ -458,7 +459,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token `cat token.txt
 | `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
 | `from`    | yyyy-mm-dd | Include films released after this date (included) | No |
 | `to`    | yyyy-mm-dd | Only Include films released before this date (excluded) | No |
-| `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
+| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
@@ -507,8 +508,65 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 |------------|---------|--------------|----------|
 | `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
 | `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
-| `show_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
-| `use_local_currency` | true/false | Use local currency instead of `USD` for actuals | No  |
+| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
+| `with_local_currency` | true/false | Include local currency in response (defaults to `false`) | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
+
+### Comps
+
+```
+GET https://forecast.gower.st/api/v3/opening-weekend
+```
+
+A ranked list of comps for one or more films. The comps are ranked by the Gower st "Smart Score" which weights the comp votes of the API user and the company of the API user more highly than comp votes by users in other organisations. You can use the `view` parameter to adjust the ranking behaviour. The default value is `all`. Other values are:
+ * `user`: Only see comps added or voted on by API user
+ * `team`: Only see comps added or voted on by all members of organisation
+ * `gower`: Only see comps added or voted on by members of the Gower St team
+ * `all`: All comps, with votes by API user and organisation weighted higher
+ * `core`: All comps with no special weight attached to votes by API user or other users in same organisation
+
+**Sample request**:
+
+```
+curl -H "Content-type: application/json" -H "Authorization: Token <token>" "https://forecast.gower.st/api/v3/comps?ter_id=UK&view=core&ptn=920845&limit=1"
+```
+
+**Sample Response**:
+```json
+{
+  "ter_ids": [
+    "UK"
+  ],
+  "primary_title_nos": [
+    920845
+  ],
+  "view": "core",
+  "data": [
+    {
+      "primary_title_no": 871308,
+      "date": "2023-07-25T15:14:34Z",
+      "favours": [],
+      "comp_booking_id": "71945",
+      "parent_booking_id": "165059",
+      "territory_id": "UK",
+      "company_id": "1",
+      "parent_primary_title_no": 920845,
+      "score": 61,
+      "user_id": "352",
+      "source_id": 1
+    }
+  ]
+}
+```
+
+**Parameters**:
+
+| Parameter  | Type    | Description  | Required |
+|------------|---------|--------------|----------|
+| `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
+| `ptn`     | Number  | IBOE Title Number (e.g. `898337` for Top Gun) | **Yes**  |
+| `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
+| `view` | String | Methodology for smart score (`all`, `user`, `team`, `gower`, `core`) | No  |
+| `limit` | Number | Limit of how many comps are returned | No  |
