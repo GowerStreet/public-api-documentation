@@ -517,7 +517,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 ### Comps
 
 ```
-GET https://forecast.gower.st/api/v3/opening-weekend
+GET https://forecast.gower.st/api/v3/comps
 ```
 
 A ranked list of comps for one or more films. The comps are ranked by the Gower st "Smart Score" which weights the comp votes of the API user and the company of the API user more highly than comp votes by users in other organisations. You can use the `view` parameter to adjust the ranking behaviour. The default value is `all`. Other values are:
