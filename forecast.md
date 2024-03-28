@@ -33,6 +33,10 @@ Any of the endpoints support querying for multiple films or territories. To do s
 GET https://forecast.gower.st/api/v3/date?ptn=898337&ptn=945975&ter_id=UK&ter_id=DE&date=2022-05-29
 ```
 
+## Getting admissions data
+
+All our endpoints returning actuals or estimates supports returning these estimates in either Admissions or Grosses using the `aog` flag (short for '*a*dmissions *o*r *g*rosses'). However, our admissions data is not equally complete across all territories. In those cases we will still return a best effort answer using a ticket price model, but in this case, even when returning actuals, we can't guarantee that they are accurate.
+
 ## Endpoints
 
 ### Metadata
@@ -153,6 +157,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
+| `aog` | `a` or `g` | Admissions or Grosses: `a` will return numbers in admissions, `g` will return numbers in grosses | No |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
 
@@ -232,6 +237,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
+| `aog` | `a` or `g` | Admissions or Grosses: `a` will return numbers in admissions, `g` will return numbers in grosses | No |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
 
@@ -335,6 +341,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
+| `aog` | `a` or `g` | Admissions or Grosses: `a` will return numbers in admissions, `g` will return numbers in grosses | No |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
 
@@ -385,6 +392,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `with_local_currency` | true/false | Include local currency alongside `USD` for actuals / predictions | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
+| `aog` | `a` or `g` | Admissions or Grosses: `a` will return numbers in admissions, `g` will return numbers in grosses | No |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
 
@@ -459,10 +467,11 @@ curl -H "Content-type: application/json" -H "Authorization: Token `cat token.txt
 | `ter_id`     | String  | Two letter country code (e.g. `DE` for Germany) | **Yes**  |
 | `from`    | yyyy-mm-dd | Include films released after this date (included) | No |
 | `to`    | yyyy-mm-dd | Only Include films released before this date (excluded) | No |
-| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
-| `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
-| `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
-| `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
+| `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No |
+| `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No |
+| `aog` | `a` or `g` | Admissions or Grosses: `a` will return numbers in admissions, `g` will return numbers in grosses | No |
+| `currency` | String | Three letter currency code like "GBP" for British pounds | No |
+| `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No |
 
 
 ### Opening Weekend
@@ -511,6 +520,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
 | `with_low_high` | true/false | Include low and high bounds for predictions (defaults to `false`) | No  |
 | `with_local_currency` | true/false | Include local currency in response (defaults to `false`) | No  |
 | `use_dom_ptn` | true/false  | Use BOE title number instead of the default behaviour of using IBOE title number | No  |
+| `aog` | `a` or `g` | Admissions or Grosses: `a` will return numbers in admissions, `g` will return numbers in grosses | No |
 | `currency` | String | Three letter currency code like "GBP" for British pounds | No  |
 | `currency_date` | yyyy-mm-dd | The date of for the exchange rate used if `currency` is specified | No  |
 
