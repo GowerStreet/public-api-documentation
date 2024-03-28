@@ -193,7 +193,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
       "ter_id": "UK",
       "primary_title_no": 898337,
       "date": "2022-05-27",
-      "week": 1,
+      "week_number": 1,
       "day_of_week": 5,
       "type": "actual",
       "currency": "USD",
@@ -204,7 +204,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
       "ter_id": "UK",
       "primary_title_no": 898337,
       "date": "2022-05-28",
-      "week": 1,
+      "week_number": 1,
       "day_of_week": 6,
       "type": "actual",
       "currency": "USD",
@@ -215,7 +215,7 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
       "ter_id": "UK",
       "primary_title_no": 898337,
       "date": "2022-05-29",
-      "week": 1,
+      "week_number": 1,
       "day_of_week": 7,
       "type": "actual",
       "currency": "USD",
@@ -253,7 +253,7 @@ Film actuals or predictions for each day in a given week in the film's release. 
 **Sample request**:
 
 ```
-curl -H "Content-type: application/json" -H "Authorization: Token <token>" "https://forecast.gower.st/api/v3/week=1?ptn=898337&ter_id=UK&week=1"
+curl -H "Content-type: application/json" -H "Authorization: Token <token>" "https://forecast.gower.st/api/v3/week?ptn=898337&ter_id=UK&week=1"
 ```
 
 **Sample Response**:
@@ -265,67 +265,82 @@ curl -H "Content-type: application/json" -H "Authorization: Token <token>" "http
   "primary_title_nos": [
     898337
   ],
-  "week": 1,
   "data": [
     {
+      "week_number": 1,
+      "currency": "USD",
       "ter_id": "UK",
       "primary_title_no": 898337,
-      "date": "2022-05-25",
-      "week": 1,
-      "day_of_week": 3,
-      "drop": null,
-      "type": "actual",
-      "currency": "USD",
-      "base": 12345.6,
-      "cume_base": 123456.7
-    },
-    {
-      "ter_id": "UK",
-      "primary_title_no": 898337,
-      "date": "2022-05-26",
-      "week": 1,
-      "day_of_week": 4,
-      "drop": 2993.17,
-      "type": "actual",
-      "currency": "USD",
-      "base": 12345.6,
-      "cume_base": 123456.7
-    },
-    {
-      "ter_id": "UK",
-      "primary_title_no": 898337,
-      "date": "2022-05-27",
-      "week": 1,
-      "day_of_week": 5,
-      "drop": null,
-      "type": "actual",
-      "currency": "USD",
-      "base": 12345.6,
-      "cume_base": 123456.7
-    },
-    {
-      "ter_id": "UK",
-      "primary_title_no": 898337,
-      "date": "2022-05-28",
-      "week": 1,
-      "day_of_week": 6,
-      "drop": null,
-      "type": "actual",
-      "currency": "USD",
-      "base": 12345.6,
-      "cume_base": 123456.7
-    },
-    {
-      "ter_id": "UK",
-      "primary_title_no": 898337,
-      "date": "2022-05-29",
-      "week": 1,
-      "day_of_week": 7,
-      "drop": null,
-      "type": "actual",
-      "currency": "USD",
-      "base": 12345.6,
-      "cume_base": 123456.7
+      "dailies": [
+        {
+          "date": "2022-05-23",
+          "day_of_week": 1,
+          "cume_base": 123456.7,
+          "type": "actual"
+        },
+        {
+          "date": "2022-05-24",
+          "day_of_week": 2,
+          "cume_base": 123456.7,
+          "type": "actual"
+        },
+        {
+          "date": "2022-05-25",
+          "day_of_week": 3,
+          "cume_base": 123456.7,
+          "drop": null,
+          "type": "actual",
+          "base": 12345.6
+        },
+        {
+          "date": "2022-05-26",
+          "day_of_week": 4,
+          "cume_base": 123456.7,
+          "drop": 20.17,
+          "type": "actual",
+          "base": 12345.6
+        },
+        {
+          "date": "2022-05-27",
+          "day_of_week": 5,
+          "cume_base": 123456.7,
+          "drop": null,
+          "type": "actual",
+          "base": 12345.6
+        },
+        {
+          "date": "2022-05-28",
+          "day_of_week": 6,
+          "cume_base": 123456.7,
+          "drop": null,
+          "type": "actual",
+          "base": 12345.6
+        },
+        {
+          "date": "2022-05-29",
+          "day_of_week": 7,
+          "cume_base": 123456.7,
+          "drop": null,
+          "type": "actual",
+          "base": 12345.6
+        }
+      ],
+      "wknd": {
+        "base": 12345.6,
+        "cume_base": 123456.7,
+        "type": "actual",
+        "start_date": "2022-05-27",
+        "end_date": "2022-05-29",
+        "drop": null
+      },
+      "week": {
+        "base": 12345.6,
+        "cume_base": 123456.7,
+        "type": "actual",
+        "start_date": "2022-05-23",
+        "end_date": "2022-05-29",
+        "drop": 25.87
+      }
     }
   ]
 }
